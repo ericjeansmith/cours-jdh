@@ -6,22 +6,34 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Exercice Javascript 1</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <script language="javascript" type="text/javascript">
             var pays = [];
-            pays[33]="France";
-            pays[32]="Belgique";
-            pays[52]="Mexique";
-            pays[81]="Japon";
-            var i=52;
-            document.write("<p> le pays "+i+" est "+pays[i]);
-            document.write("<p> le tableau pays comporte "+pays.length+" elements");
-            document.write("<br/>"+pays[10]);
-           
+            pays[33] = "France";
+            pays[32] = "Belgique";
+            pays[52] = "Mexique";
+            pays[81] = "Japon";
+            console.log(pays)
+            var i = 52;
+            document.write("<br/> le pays " + i + " est " + pays[i]);
+            document.write("<br/> le tableau pays comporte " + pays.length + " elements");
+            document.write("<br/>" + pays[10]);
+            document.write("<br/>");
+
+            var tabDeString = [];
+            tabDeString["tess"] = "chien";
+            tabDeString["fifi"] = "chien";
+            tabDeString["alcaline"] = "chat";
+            console.log(tabDeString);
+            document.write("<br/> le tableau tabDeString comporte " + tabDeString.length + " elements");
+            var nom = "fifi";
+            document.write("<br/> "+nom +" est un "+ tabDeString[nom]);
+
+
         </script>
     </body>
 </html>
