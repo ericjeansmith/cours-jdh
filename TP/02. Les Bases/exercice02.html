@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 2</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Pays</th>
+            <th>Frais de port</th>
+        </tr>
+        </thead>
+        <tbody>
+    <script language="JavaScript" type="text/javascript">
+        var tab_pays = [];
+        tab_pays[0] = ["Allemagne", 11];
+        tab_pays[1] = ["France", 10];
+        tab_pays[2] = ["Belgique", 15];
+        tab_pays[3] = ["Suisse", 18];
+        tab_pays[4] = ["Espagne", 16];
+
+        var colors = ["#e3ff80", "#68e9ff"];
+        var tableauHtml = "";
+        var comboBoxHtml = "<select>";
+        for(var i = 0; i<tab_pays.length; i++) {
+            var colorCss = "style=\"background-color:"+colors[i%2]+"\"";
+            tableauHtml += "<tr "+colorCss+"><td>"+tab_pays[i][0]+"</td><td>"+tab_pays[i][1]+"</td></tr>";
+            comboBoxHtml += "<option value=\""+tab_pays[i][0]+"\">"+tab_pays[i][0]+"</option>"
+        }
+        comboBoxHtml += "</select>";
+        document.write(tableauHtml);
+
+    </script>
+        </tbody>
+    </table>
+
+    <script language="JavaScript" type="text/javascript">
+        document.write(comboBoxHtml);
+
+    </script>
+
+</body>
+</html>
