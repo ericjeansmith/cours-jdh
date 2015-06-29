@@ -12,7 +12,16 @@ and open the template in the editor.
     </head>
     <body>
         <script language="javascript" type="text/javascript">
-
+            var pays = [];
+            pays[33]="France";
+            pays[32]="Belgique";
+            pays[52]="Mexique";
+            pays[81]="Japon";
+            var i=52;
+            document.write("<p> le pays "+i+" est "+pays[i]);
+            document.write("<p> le tableau pays comporte "+pays.length+" elements");
+            document.write("<br/>"+pays[10]);
+           
         </script>
     </body>
 </html>
