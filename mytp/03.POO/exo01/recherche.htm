@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<script language="JavaScript" type="text/javascript" src="lib/affiche.js"></script>
+		<script language="JavaScript" type="text/javascript" src="lib/menu.js"></script>
+		<script language="JavaScript" type="text/javascript" src="lib/bd.js"></script>
+		<title>Accueil</title>
+		<style type="text/css" media="screen">
+			@import url("lib/style.css");
+		</style>
+	</head>
+	<body>
+		<script language="JavaScript" type="text/javascript">
+			affichePageBandeauHaut();
+			affichePageMenu();
+			affichePageTitre()
+		</script>
+		<div id="blockDroit">
+			<p>Vous allez bientot pouvoir trouver une BD.</p>
+
+
+			<script language="JavaScript" type="text/javascript">
+				var asterixChezLesHelvetes
+					= new bd("Asterix Chez les Helvetes", "Gosciny & Uderzo", "1978", "Asterix et Obelix doivent sauver un romain", 9.9, 50);
+				document.write(asterixChezLesHelvetes.toString());
+				document.write("<br/>");
+				asterixChezLesHelvetes.destocker(10);
+				document.write(asterixChezLesHelvetes.toString());
+				document.write("<br/>");
+				asterixChezLesHelvetes.stocker(2);
+				document.write(asterixChezLesHelvetes.toString());
+				document.write("<br/>");
+
+				var laSerpeDor
+				= new bd("La serpe d'or", "Gosciny & Uderzo", "1971", "Asterix et Obelix doivent trouver une nouvelle serpe d'or",
+				asterixChezLesHelvetes.prix , asterixChezLesHelvetes.stock);
+				document.write(laSerpeDor.toString());
+				document.write("<br/>");
+			</script>
+
+
+
+		</div>
+        <script language="JavaScript" type="text/javascript">
+            affichePagePied();
+        </script>
+	</body>
+</html>
