@@ -6,7 +6,7 @@
  * Variable statique de la class bd
  * @type {number}
  */
-bd.index = 0;
+ficheBd.index = 1;
 
 /**
  * Cosntructeur de la classe bd
@@ -17,8 +17,8 @@ bd.index = 0;
  * @param prix
  * @param stock
  */
-function bd(titre, auteur, sortie, resume, prix, stock) {
-    this.id = bd.index ++;
+function ficheBd(titre, auteur, sortie, resume, prix, stock) {
+    this.id = ficheBd.index ++;
     this.titre = titre;
     this.auteur = auteur;
     this.sortie = sortie;
@@ -29,36 +29,71 @@ function bd(titre, auteur, sortie, resume, prix, stock) {
         this.prix = prix;
     }
     this.stock = (stock === undefined) ? 0 : stock;
-    this.stocker = stocker;
-    this.destocker = stocker;
-    this.toString = toString;
+
+    this.stocker = function(qte) {
+        if(qte === undefined) {
+            qte = 1;
+        }
+        this.stock -= qte;
+    };
+
+    this.destocker = function(qte) {
+        if(qte === undefined) {
+            qte = 1;
+        }
+        this.stock += qte;
+    };
+
+    this.toString = function() {
+        return "FICHE BD N°"+this.id+" : "+this.titre+" - Auteur:"+this.auteur+" - Prix  :"+this.prix+" - Stock : "+this.stock;
+    };
 }
 
-/**
- * incrémente le stock de qte si fourni, de 1 sinon
- * @param qte
- */
-function stocker(qte) {
-    if(qte === undefined) {
-        qte = 1;
+
+function stockBd() {
+    this.stock = new Array();
+    this.stockByKey = new Array();
+
+    this.referencer = function(bd) {
+        if (typeof bd === "object") {
+            this.stock.push(bd);
+            this.stockByKey[bd.id] = bd;
+        }
+    };
+
+    this.ajouter = function(titre, auteur, sortie, resume, prix, stock) {
+        var uneBd = new ficheBd(titre, auteur, sortie, resume, prix, stock);
+        this.referencer(uneBd);
+    };
+
+    this.stocker = function(id, qte) {
+        if(stockByKey[id] !== undefined) {
+            stockByKey[id].stocker(qte);
+        }
+    };
+
+    this.destocker = function(id, qte) {
+        if(stockByKey[id] !== undefined) {
+            stockByKey[id].destocker(qte);
+        }
+    };
+
+    this.toString = function() {
+        var ret = '<table border = "1"><tr><th>id</th><th>titre</th><th>auteur</th><th>prix</th><th>stock</th><th>sortie</th></tr>';
+        for(var i = 0; i<this.stock.length; i++) {
+            var bd = this.stock[i];
+            ret += "<tr>"
+            ret += "<td>"+ bd.id + "</td>"
+            ret += "<td>"+ bd.titre + "</td>"
+            ret += "<td>"+ bd.auteur + "</td>"
+            ret += "<td>"+ bd.prix + "</td>"
+            ret += "<td>"+ bd.stock+ "</td>"
+            ret += "<td>"+ bd.sortie + "</td>"
+            ret += "</tr>"
+        }
+        ret += "</table>"
+        return ret;
     }
-    this.stock -= qte;
+
 }
 
-/**
- * décrémente le stock de qte si fourni, de 1 sinon
- * @param qte
- */
-function destocker(qte) {
-    if(qte === undefined) {
-        qte = 1;
-    }
-    this.stock += qte;
-}
-
-/**
- * affiche une répésentation textuelle de l'objet
- */
-function toString() {
-    return "FICHE BD N°"+this.id+" : "+this.titre+" - Auteur:"+this.auteur+" - Prix  :"+this.prix+" - Stock : "+this.stock;
-}

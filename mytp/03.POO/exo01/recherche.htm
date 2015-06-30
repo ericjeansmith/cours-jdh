@@ -20,21 +20,38 @@
 
 			<script language="JavaScript" type="text/javascript">
 				var asterixChezLesHelvetes
-					= new bd("Asterix Chez les Helvetes", "Gosciny & Uderzo", "1978", "Asterix et Obelix doivent sauver un romain", 9.9, 50);
-				document.write(asterixChezLesHelvetes.toString());
+					= new ficheBd("Asterix Chez les Helvetes", "Gosciny & Uderzo", "1978", "Asterix et Obelix doivent sauver un romain", 9.9, 50);
+				document.write(asterixChezLesHelvetes);
 				document.write("<br/>");
 				asterixChezLesHelvetes.destocker(10);
-				document.write(asterixChezLesHelvetes.toString());
+				document.write(asterixChezLesHelvetes);
 				document.write("<br/>");
 				asterixChezLesHelvetes.stocker(2);
-				document.write(asterixChezLesHelvetes.toString());
+				document.write(asterixChezLesHelvetes);
 				document.write("<br/>");
 
 				var laSerpeDor
-				= new bd("La serpe d'or", "Gosciny & Uderzo", "1971", "Asterix et Obelix doivent trouver une nouvelle serpe d'or",
+				= new ficheBd("La serpe d'or", "Gosciny & Uderzo", "1971", "Asterix et Obelix doivent trouver une nouvelle serpe d'or",
 				asterixChezLesHelvetes.prix , asterixChezLesHelvetes.stock);
-				document.write(laSerpeDor.toString());
+				document.write(laSerpeDor);
 				document.write("<br/>");
+
+				document.write("<br/> exercice 2 --------------");
+
+				var bibStock = new stockBd();
+				bibStock.ajouter("Lucky Luke -Ma Dalton","Morris/Goscinny", 1971, "", 50, 10 );
+				bibStock.ajouter("Lucky Luke -Les Dalton se rachetent","Morris/Goscinny", 1965, "", 75, 15 );
+				bibStock.ajouter("Lucky Luke -Le cuisinier français","Morris/Goscinny", 2003, "", 20, 50 );
+				bibStock.ajouter("Astérix le gaulois","Uderzo/Goscinny", 1961, "", 1000, 1 );
+				bibStock.ajouter("Astérix et les Goths","Uderzo/Goscinny", 1963, "", 900, 0 );
+				bibStock.ajouter("Tanguy et Laverdure à L'ecole","Uderzo/Charlier", 1996, "", 15, 4 );
+				bibStock.ajouter("Blueberry - La tribu fantome","Giraud/Charlier", 1982, "", 5, 2 );
+				bibStock.ajouter("Largo Winch - La voie et la vertu","Van Hamme/Francq", 2008, "", 25, 50 );
+
+				document.write(bibStock);
+
+
+
 			</script>
 
 
