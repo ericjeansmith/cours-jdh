@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calcul TTC</title>
+
+    <script language="JavaScript" type="text/javascript">
+        function prixTTC(prixHT, taux) {
+            var ttc = prixHT * (1 + taux / 100);
+            return ttc;
+        }
+    </script>
+
+</head>
+<body>
+
+<h2>
+    <script language="JavaScript" type="text/javascript">
+        var ht = 99;
+        var taux = 5.5;
+        var prixTTC = prixTTC(99, 5.5);
+        document.write("Le prix est " + prixTTC + " euros pour un HT de "+ht+" euros au taux de "+taux+"%");
+    </script>
+</h2>
+
+</body>
+</html>
