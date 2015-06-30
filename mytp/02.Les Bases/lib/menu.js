@@ -8,16 +8,16 @@ pagesDisponibles = [
         ["Commande","commande.htm","Votre panier"]
     ];
 
-function affichePageMenu(pageSelectionnee) {
-
-    var menuItems = "<div id=\"menu\">";
+function affichePageMenu() {
+    var pageSelectionnee = getCurrentPage();
+    var menuItems = '<div id="menu">';
     menuItems += "<ul>";
     for(var i = 0; i<pagesDisponibles.length; i++) {
         var item = "<li";
         if(pageSelectionnee == pagesDisponibles[i][1]) {
-            item += " class=\"select\"";
+            item += ' class="select"';
         }
-        item += "><a href=\""+pagesDisponibles[i][1]+"\" title=\""+pagesDisponibles[i][0]+"\">"+pagesDisponibles[i][0]+"</a></li>";
+        item += "><a href=\""+pagesDisponibles[i][1]+'" title="'+pagesDisponibles[i][0]+'">'+pagesDisponibles[i][0]+"</a></li>";
         console.log(item);
         menuItems += item;
     }
