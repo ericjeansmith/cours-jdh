@@ -23,5 +23,6 @@ function affichePageMenu(pageSelectionnee) {
     }
     menuItems += "</ul>";
     menuItems += "</div>";
+    console.log(menuItems)
     document.write(menuItems);
 }
