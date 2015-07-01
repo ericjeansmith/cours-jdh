@@ -109,3 +109,26 @@ h1  {
 #pied span {
     margin-left: 10%;
 }
+
+/*Stock table style*/
+
+#stock table td, th {
+    border-right: 1px solid #6f7695;
+}
+
+#stock table tr:nth-child(even) {
+    background-color: #faffac;
+}
+
+#stock table tr:nth-child(odd) {
+    background-color: #bbccff;
+}
+
+#stock table tr:nth-child(1) {
+    background-color: #b2af65;
+}
+
+#stock table {
+    border: 2px solid #6f7695;
+    border-collapse:collapse
+}

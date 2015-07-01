@@ -34,14 +34,14 @@ function ficheBd(titre, auteur, sortie, resume, prix, stock) {
         if(qte === undefined) {
             qte = 1;
         }
-        this.stock -= qte;
+        this.stock += qte;
     };
 
     this.destocker = function(qte) {
         if(qte === undefined) {
             qte = 1;
         }
-        this.stock += qte;
+        this.stock -= qte;
     };
 
     this.toString = function() {
@@ -56,8 +56,8 @@ function stockBd() {
 
     this.referencer = function(bd) {
         if (typeof bd === "object") {
+            this.stockByKey[bd.id] = this.stock.length;
             this.stock.push(bd);
-            this.stockByKey[bd.id] = bd;
         }
     };
 
@@ -67,31 +67,33 @@ function stockBd() {
     };
 
     this.stocker = function(id, qte) {
-        if(stockByKey[id] !== undefined) {
-            stockByKey[id].stocker(qte);
+        if(this.stockByKey[id] !== undefined) {
+            var bd = this.stock[this.stockByKey[id]];
+            bd.stocker(qte);
         }
     };
 
     this.destocker = function(id, qte) {
-        if(stockByKey[id] !== undefined) {
-            stockByKey[id].destocker(qte);
+        if(this.stockByKey[id] !== undefined) {
+            var bd = this.stock[this.stockByKey[id]];
+            bd.destocker(qte);
         }
     };
 
     this.toString = function() {
-        var ret = '<table border = "1"><tr><th>id</th><th>titre</th><th>auteur</th><th>prix</th><th>stock</th><th>sortie</th></tr>';
+        var ret = '<div id="stock"><table><tr><th>id</th><th>titre</th><th>auteur</th><th>prix</th><th>stock</th><th>sortie</th></tr>';
         for(var i = 0; i<this.stock.length; i++) {
             var bd = this.stock[i];
-            ret += "<tr>"
-            ret += "<td>"+ bd.id + "</td>"
-            ret += "<td>"+ bd.titre + "</td>"
-            ret += "<td>"+ bd.auteur + "</td>"
-            ret += "<td>"+ bd.prix + "</td>"
-            ret += "<td>"+ bd.stock+ "</td>"
-            ret += "<td>"+ bd.sortie + "</td>"
-            ret += "</tr>"
+            ret += "<tr>";
+            ret += "<td>"+ bd.id + "</td>";
+            ret += "<td>"+ bd.titre + "</td>";
+            ret += "<td>"+ bd.auteur + "</td>";
+            ret += "<td>"+ bd.prix + "</td>";
+            ret += "<td>"+ bd.stock+ "</td>";
+            ret += "<td>"+ bd.sortie + "</td>";
+            ret += "</tr>";
         }
-        ret += "</table>"
+        ret += "</table></div>";
         return ret;
     }
 
