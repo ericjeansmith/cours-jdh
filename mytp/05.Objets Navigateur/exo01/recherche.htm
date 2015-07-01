@@ -1,0 +1,125 @@
+<html>
+	<head>
+		<script language="JavaScript" type="text/javascript" src="lib/affiche.js"></script>
+		<script language="JavaScript" type="text/javascript" src="lib/menu.js"></script>
+		<script language="JavaScript" type="text/javascript" src="lib/bd.js"></script>
+		<title>Accueil</title>
+		<style type="text/css" media="screen">
+			@import url("lib/style.css");
+		</style>
+	</head>
+	<body>
+		<script language="JavaScript" type="text/javascript">
+			affichePageBandeauHaut();
+			affichePageMenu();
+			affichePageTitre()
+		</script>
+		<br id="blockDroit">
+			<p>Vous allez bientot pouvoir trouver une BD.</p>
+
+
+			<script language="JavaScript" type="text/javascript">
+				var asterixChezLesHelvetes
+					= new ficheBd("Asterix Chez les Helvetes", "Gosciny & Uderzo", "1978", "Asterix et Obelix doivent sauver un romain", 9.9, 50);
+				document.write(asterixChezLesHelvetes);
+				document.write("<br/>");
+				asterixChezLesHelvetes.destocker(10);
+				document.write(asterixChezLesHelvetes);
+				document.write("<br/>");
+				asterixChezLesHelvetes.stocker(2);
+				document.write(asterixChezLesHelvetes);
+				document.write("<br/>");
+
+				var laSerpeDor
+				= new ficheBd("La serpe d'or", "Gosciny & Uderzo", "1971", "Asterix et Obelix doivent trouver une nouvelle serpe d'or",
+				asterixChezLesHelvetes.prix , asterixChezLesHelvetes.stock);
+				document.write(laSerpeDor);
+				document.write("<br/>");
+
+				document.write("<br/> exercice 2 --------------");
+
+				var bibStock = new stockBd();
+				bibStock.ajouter("Lucky Luke -Ma Dalton","Morris/Goscinny", 1971, "", 50, 10 );
+				bibStock.ajouter("Lucky Luke -Les Dalton se rachetent","Morris/Goscinny", 1965, "", 75, 15 );
+				bibStock.ajouter("Lucky Luke -Le cuisinier français","Morris/Goscinny", 2003, "", 20, 50 );
+				bibStock.ajouter("Astérix le gaulois","Uderzo/Goscinny", 1961, "", 1000, 1 );
+				bibStock.ajouter("Astérix et les Goths","Uderzo/Goscinny", 1963, "", 900, 0 );
+				bibStock.ajouter("Tanguy et Laverdure à L'ecole","Uderzo/Charlier", 1996, "", 15, 4 );
+				bibStock.ajouter("Blueberry - La tribu fantome","Giraud/Charlier", 1982, "", 5, 2 );
+				bibStock.ajouter("Largo Winch - La voie et la vertu","Van Hamme/Francq", 2008, "", 25, 50 );
+
+				document.write(bibStock);
+				document.write("<br/> Après les ventes");
+
+				bibStock.destocker(3, 8);
+				bibStock.destocker(4);
+				bibStock.stocker(5,1000);
+				bibStock.stocker(6);
+
+				document.write(bibStock);
+
+
+				var options = {
+					enableHighAccuracy: true,
+					timeout: 5000,
+					maximumAge: 0
+				};
+
+				function success(pos) {
+					var crd = pos.coords;
+
+					console.log('Your current position is:');
+					console.log('Latitude : ' + crd.latitude);
+					console.log('Longitude: ' + crd.longitude);
+					console.log('More or less ' + crd.accuracy + ' meters.');
+				};
+
+				function error(err) {
+					console.warn('ERROR(' + err.code + '): ' + err.message);
+				};
+
+				navigator.geolocation.getCurrentPosition(success, error, options);
+
+			</script>
+			</br>
+			<textarea rows="1" cols="50" id="recherche"></textarea>
+			</br>
+			Vous avez saisi : <span id="visuSaisie"></span>
+			<script language="JavaScript" type="text/javascript">
+				var selection;
+				var textareaRecherche = document.getElementById("recherche");
+				textareaRecherche.onkeypress = afficherSaisie;
+				textareaRecherche.onkeyup = gererDelete;
+				window.addEventListener('select',gererSelection);
+
+				function afficherSaisie(evt) {
+					var divVisuSaisie = document.getElementById("visuSaisie");
+					document.getSelection();
+					if(selection == true) {
+						divVisuSaisie.innerHTML = textareaRecherche.value;
+						selection = false;
+					} else {
+						divVisuSaisie.innerHTML += String.fromCharCode(evt.keyCode);
+					}
+				}
+
+				function gererDelete(evt) {
+					var divVisuSaisie = document.getElementById("visuSaisie");
+					if(evt.keyCode == 8) {
+						divVisuSaisie.innerHTML = textareaRecherche.value;
+					}
+				}
+
+				function gererSelection(evt) {
+					if(evt.target === textareaRecherche) {
+						selection = true;
+					}
+				}
+
+			</script>
+		</div>
+        <script language="JavaScript" type="text/javascript">
+            affichePagePied();
+        </script>
+	</body>
+</html>
